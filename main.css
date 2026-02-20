@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;800&display=swap');
+
+:root {
+    --primary: #FFD700;
+    --primary-glow: #CCFF00;
+    --bg-dark: #000000;
+    --bg-card: #1a1a1a;
+    --text-white: #FFFFFF;
+    --gray: #2d2d2d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important;
+    /* Custom cursor implementation */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.font-bebas {
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 2px;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease;
+}
+
+#custom-cursor-trail {
+    width: 10px;
+    height: 10px;
+    background: var(--primary-glow);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.5;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glow Effects */
+.glow-text {
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary-glow);
+}
+
+.glow-border:hover {
+    box-shadow: 0 0 15px var(--primary);
+    border-color: var(--primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+/* Animations */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.glitch:hover {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    color: var(--primary);
+}
+
+/* Mascot Float */
+.mascot-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Brand Logo Sunburst */
+.logo-sunburst {
+    background: repeating-conic-gradient(from 0deg,
+            #ff0000 0deg 15deg,
+            #ffffff 15deg 30deg);
+    border: 3px solid #FFD700;
+}

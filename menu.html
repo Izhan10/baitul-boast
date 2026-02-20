@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Bait Ul Broast</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD700',
+                        secondary: '#CCFF00',
+                        bgDark: '#000000',
+                        cardDark: '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body class="bg-black text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mascot-float">
+                <svg viewBox="0 0 24 24" fill="black" class="w-6 h-6">
+                    <path
+                        d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10,10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8 S16.41,20,12,20z M11,7h2v2h-2V7z M11,11h2v6h-2V11z" />
+                </svg>
+            </div>
+            <span class="text-2xl font-bebas tracking-tighter text-primary">BAIT UL BROAST</span>
+        </a>
+
+        <div class="flex items-center gap-6">
+            <a href="order.html" class="relative">
+                <i data-lucide="shopping-bag" class="w-6 h-6 text-primary"></i>
+                <span
+                    class="cart-count absolute -top-2 -right-2 bg-secondary text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 md:px-12">
+        <header class="text-center mb-16">
+            <h1 class="text-6xl md:text-8xl font-bebas text-primary mb-4 glitch">OUR LEGENDARY MENU</h1>
+            <p class="text-gray-400 italic">Vibe checked recipes. Freshly served.</p>
+        </header>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button
+                class="menu-tab active px-8 py-3 rounded-full font-black text-xs tracking-widest bg-primary text-black"
+                onclick="filterMenu('all')">ALL ITEMS</button>
+            <button
+                class="menu-tab px-8 py-3 rounded-full font-black text-xs tracking-widest border border-primary text-primary hover:bg-primary hover:text-black transition-all"
+                onclick="filterMenu('broast')">BROAST</button>
+            <button
+                class="menu-tab px-8 py-3 rounded-full font-black text-xs tracking-widest border border-primary text-primary hover:bg-primary hover:text-black transition-all"
+                onclick="filterMenu('burger')">BURGERS</button>
+            <button
+                class="menu-tab px-8 py-3 rounded-full font-black text-xs tracking-widest border border-primary text-primary hover:bg-primary hover:text-black transition-all"
+                onclick="filterMenu('sides')">SIDES</button>
+            <button
+                class="menu-tab px-8 py-3 rounded-full font-black text-xs tracking-widest border border-primary text-primary hover:bg-primary hover:text-black transition-all"
+                onclick="filterMenu('drinks')">DRINKS</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            <!-- Items will be injected by JS -->
+        </div>
+    </main>
+
+    <!-- Modal Base (Hidden) -->
+    <div id="quick-view" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="closeModal()"></div>
+        <div class="glass max-w-4xl w-full rounded-3xl overflow-hidden relative grid grid-cols-1 md:grid-cols-2">
+            <div class="h-96 md:h-full bg-gray-900 flex items-center justify-center p-12">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-contain mascot-float">
+            </div>
+            <div class="p-12 flex flex-col justify-center">
+                <h2 id="modal-name" class="text-5xl font-bebas mb-2 text-primary">ITEM NAME</h2>
+                <p id="modal-desc" class="text-gray-400 mb-8 italic">Item description goes here.</p>
+                <div class="flex items-center gap-4 mb-10">
+                    <span id="modal-price" class="text-4xl font-black">Rs. 0</span>
+                    <span class="text-secondary font-bold text-sm tracking-widest">LIMITED EDITION</span>
+                </div>
+                <button onclick="addToCartFromModal()"
+                    class="w-full py-4 bg-primary text-black font-extrabold rounded-full hover:bg-secondary transition-all shadow-[0_0_20px_rgba(255,215,0,0.3)]">
+                    ADD TO CART
+                </button>
+            </div>
+            <button class="absolute top-6 right-6 text-white" onclick="closeModal()">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        const menuItems = [
+            { id: 1, name: "FULL BROAST", category: "broast", price: 2500, img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400", desc: "4 Leg 4 Thai, 2 Bun Fries, 2 Garlic Dip, 1 Honey Mustard." },
+            { id: 2, name: "HALF BROAST", category: "broast", price: 1300, img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400", desc: "2 Leg 2 Thai, 1 Bun Fries, 1 Garlic Dip, 1 Honey Mustard." },
+            { id: 3, name: "FESTIVAL DEAL", category: "deals", price: 2500, img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400", desc: "4 Crunch Burger, 4 Pcs Broast, 1 Fries Box, 1 Litre Cold Drink." },
+            { id: 4, name: "CRUNCH MAZA", category: "deals", price: 499, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400", desc: "1 Crunchy Burger, 1 Fries, 1 Cold Drink." },
+            { id: 5, name: "FISH BURGER", category: "burger", price: 800, img: "https://images.unsplash.com/photo-1511909523672-51e61d1f7aa5?w=400", desc: "Fish patty with cheese and spicy mayo." },
+            { id: 6, name: "HOTSHOTS", category: "sides", price: 450, img: "https://images.unsplash.com/photo-1562967914-608f82629710?w=400", desc: "8 Hotshots + 1 Dip. Spicy bite-sized chicken." },
+            { id: 7, name: "DRUMMER WINGS", category: "sides", price: 860, img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400", desc: "10 Pcs Wings + 1 Dip + 1 Cold Drink." },
+            { id: 8, name: "CRUNCHY STRIPS", category: "sides", price: 400, img: "https://images.unsplash.com/photo-1562967962-63e051cd4146?w=400", desc: "3 Chicken Strips + 1 Dip." }
+        ];
+
+        let currentModalItem = null;
+
+        function renderMenu(items) {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = items.map(item => `
+                <div class="glass p-5 rounded-3xl glow-border group cursor-pointer transition-all duration-300 hover:scale-[1.02]" onclick="openQuickView(${item.id})">
+                    <div class="h-56 bg-gray-900/50 rounded-2xl mb-5 overflow-hidden">
+                        <img src="${item.img}" class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bebas text-2xl tracking-tight">${item.name}</h3>
+                        <span class="text-primary font-black">Rs. ${item.price}</span>
+                    </div>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-4">${item.category}</p>
+                    <button class="w-full py-3 border border-white/20 rounded-xl text-[10px] font-black tracking-[0.2em] hover:bg-primary hover:text-black hover:border-primary transition-all uppercase">QUICK SHOP</button>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function filterMenu(category) {
+            const tabs = document.querySelectorAll('.menu-tab');
+            tabs.forEach(t => {
+                t.classList.remove('bg-primary', 'text-black');
+                t.classList.add('border-primary', 'text-primary');
+            });
+            event.target.classList.remove('border-primary', 'text-primary');
+            event.target.classList.add('bg-primary', 'text-black');
+
+            if (category === 'all') renderMenu(menuItems);
+            else renderMenu(menuItems.filter(i => i.category === category));
+        }
+
+        function openQuickView(id) {
+            const item = menuItems.find(i => i.id === id);
+            currentModalItem = item;
+            document.getElementById('modal-img').src = item.img;
+            document.getElementById('modal-name').textContent = item.name;
+            document.getElementById('modal-desc').textContent = item.desc;
+            document.getElementById('modal-price').textContent = `Rs. ${item.price}`;
+            document.getElementById('quick-view').classList.remove('hidden');
+            gsap.from('#quick-view .glass', { scale: 0.8, opacity: 0, duration: 0.5, ease: 'back.out' });
+        }
+
+        function closeModal() {
+            gsap.to('#quick-view .glass', {
+                scale: 0.8, opacity: 0, duration: 0.3, onComplete: () => {
+                    document.getElementById('quick-view').classList.add('hidden');
+                }
+            });
+        }
+
+        function addToCartFromModal() {
+            if (!currentModalItem) return;
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existing = cart.find(i => i.id === currentModalItem.id);
+            if (existing) existing.quantity++;
+            else cart.push({ ...currentModalItem, quantity: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+            closeModal();
+
+            // Success visual
+            const btn = event.target;
+            btn.textContent = "ADDED! 🔥";
+            setTimeout(() => btn.textContent = "ADD TO CART", 2000);
+        }
+
+        renderMenu(menuItems);
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

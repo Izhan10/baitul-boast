@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Bait Ul Broast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#FFD700', secondary: '#CCFF00', bgDark: '#000000', cardDark: '#1a1a1a' } } }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/api/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body class="bg-black text-white">
+
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2">
+            <div
+                class="w-10 h-10 logo-sunburst rounded-full flex items-center justify-center mascot-float overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="black" class="w-6 h-6 z-10">
+                    <path
+                        d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10,10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8 S16.41,20,12,20z M11,7h2v2h-2V7z M11,11h2v6h-2V11z" />
+                </svg>
+            </div>
+            <span class="text-2xl font-bebas tracking-tighter text-primary">BAIT UL BROAST</span>
+        </a>
+        <div class="flex gap-6">
+            <a href="index.html" class="text-xs font-bold tracking-widest hover:text-primary transition-all">HOME</a>
+            <a href="menu.html" class="text-xs font-bold tracking-widest hover:text-primary transition-all">MENU</a>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+
+            <!-- Left: Contact Info -->
+            <div>
+                <header class="mb-12">
+                    <p class="text-secondary font-black tracking-[0.5em] mb-4 text-xs">HIT US UP</p>
+                    <h1 class="text-7xl md:text-9xl font-bebas leading-[0.8] glitch">GET IN<br><span
+                            class="text-primary">TOUCH</span></h1>
+                </header>
+
+                <div class="space-y-12">
+                    <div class="flex gap-6 items-start">
+                        <div
+                            class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center flex-shrink-0 rotate-6">
+                            <i data-lucide="mail" class="w-6 h-6 text-black"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bebas text-2xl mb-1 tracking-wider text-primary">EMAIL THE SQUAD</h4>
+                            <p class="text-gray-400 italic">vibes@baitulbroast.com</p>
+                            <p class="text-gray-400 italic">support@baitulbroast.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 items-start">
+                        <div
+                            class="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center flex-shrink-0 -rotate-6">
+                            <i data-lucide="phone" class="w-6 h-6 text-black"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bebas text-2xl mb-1 tracking-wider text-primary">GIVE US A RING</h4>
+                            <p class="text-gray-400 italic">0302-0643333</p>
+                            <p class="text-gray-400 italic">0332-0643333</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-10 pt-10">
+                        <a href="#"
+                            class="magnetic w-16 h-16 border-2 border-primary rounded-full flex items-center justify-center hover:bg-primary transition-all group">
+                            <i data-lucide="instagram" class="w-6 h-6 text-primary group-hover:text-black"></i>
+                        </a>
+                        <a href="#"
+                            class="magnetic w-16 h-16 border-2 border-primary rounded-full flex items-center justify-center hover:bg-primary transition-all group">
+                            <i data-lucide="twitter" class="w-6 h-6 text-primary group-hover:text-black"></i>
+                        </a>
+                        <a href="#"
+                            class="magnetic w-16 h-16 border-2 border-primary rounded-full flex items-center justify-center hover:bg-primary transition-all group">
+                            <i data-lucide="facebook" class="w-6 h-6 text-primary group-hover:text-black"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Interactive Form -->
+            <div class="glass p-10 md:p-16 rounded-[3rem] glow-border relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 opacity-10">
+                    <i data-lucide="message-square" class="w-40 h-40"></i>
+                </div>
+
+                <h2 class="text-4xl font-bebas mb-10">SEND A MESSAGE</h2>
+
+                <form id="contact-form" class="space-y-8">
+                    <div class="space-y-2 group">
+                        <label
+                            class="text-[10px] font-black tracking-widest text-gray-500 group-focus-within:text-primary transition-colors">YOUR
+                            NAME</label>
+                        <input type="text" placeholder="John Vibe"
+                            class="w-full bg-white/5 border-b border-white/20 p-4 outline-none focus:border-primary transition-all italic text-lg">
+                    </div>
+
+                    <div class="space-y-2 group">
+                        <label
+                            class="text-[10px] font-black tracking-widest text-gray-500 group-focus-within:text-primary transition-colors">YOUR
+                            EMAIL</label>
+                        <input type="email" placeholder="john@vibes.com"
+                            class="w-full bg-white/5 border-b border-white/20 p-4 outline-none focus:border-primary transition-all italic text-lg">
+                    </div>
+
+                    <div class="space-y-2 group">
+                        <label
+                            class="text-[10px] font-black tracking-widest text-gray-500 group-focus-within:text-primary transition-colors">WHAT'S
+                            THE WORD?</label>
+                        <textarea placeholder="Tell us about that legendary crunch..."
+                            class="w-full bg-white/5 border-b border-white/20 p-4 outline-none focus:border-primary transition-all italic text-lg h-32"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-5 bg-primary text-black font-black text-xs tracking-[0.4em] rounded-2xl hover:bg-secondary transition-all shadow-[0_0_30px_rgba(255,215,0,0.2)]">
+                        SEND VIBES
+                    </button>
+                </form>
+
+                <!-- Success Overlay (Hidden) -->
+                <div id="form-success"
+                    class="absolute inset-0 bg-black flex flex-col items-center justify-center p-10 text-center hidden">
+                    <div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center mb-6 mascot-float">
+                        <i data-lucide="check" class="w-12 h-12 text-black"></i>
+                    </div>
+                    <h3 class="text-4xl font-bebas mb-4">VIBES RECEIVED!</h3>
+                    <p class="text-gray-400 italic">The squad will get back to you faster than a fresh fry.</p>
+                    <button onclick="resetForm()"
+                        class="mt-8 text-[10px] font-black tracking-widest text-primary hover:text-white transition-all uppercase">SEND
+                        ANOTHER</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <section class="mt-40 max-w-4xl mx-auto">
+            <h2 class="text-5xl font-bebas mb-12 text-center">LEGENDARY QUESTIONS</h2>
+            <div class="space-y-4">
+                <div class="glass p-6 rounded-2xl cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold tracking-wide">IS THE BROAST ACTUALLY LEGENDARY?</h4>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content h-0 overflow-hidden transition-all duration-300 opacity-0 mt-4">
+                        <p class="text-gray-400 italic">Bro, is water wet? It's literally in the name. Try it once and
+                            you'll understand why the vibes are unmatched.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold tracking-wide">DO YOU HAVE VEGAN OPTIONS?</h4>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content h-0 overflow-hidden transition-all duration-300 opacity-0 mt-4">
+                        <p class="text-gray-400 italic">We're working on some plant-based vibes right now. Stay tuned to
+                            our IG for the drop!</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold tracking-wide">WHERE IS MY ORDER?</h4>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content h-0 overflow-hidden transition-all duration-300 opacity-0 mt-4">
+                        <p class="text-gray-400 italic">Check the live tracker on the order page! If it's been more than
+                            30 mins, hit the chat widget for a refund code.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black border-t border-gray py-20 px-6 md:px-12 text-center">
+        <div class="flex justify-center gap-10 mb-8">
+            <a href="index.html" class="text-[10px] font-black tracking-widest hover:text-primary">HOME</a>
+            <a href="menu.html" class="text-[10px] font-black tracking-widest hover:text-primary">MENU</a>
+            <a href="about.html" class="text-[10px] font-black tracking-widest hover:text-primary">STORY</a>
+        </div>
+        <p class="text-[8px] text-gray-600 font-bold uppercase tracking-widest">© 2026 BAIT UL BROAST - VIBE CHECKED</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        lucide.createIcons();
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('form-success').classList.remove('hidden');
+        });
+
+        function resetForm() {
+            document.getElementById('form-success').classList.add('hidden');
+            document.getElementById('contact-form').reset();
+        }
+
+        function toggleFAQ(elem) {
+            const content = elem.querySelector('.faq-content');
+            const icon = elem.querySelector('i');
+            const isOpen = content.style.height !== '0px' && content.style.height !== '';
+
+            if (isOpen) {
+                content.style.height = '0px';
+                content.style.opacity = '0';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.height = content.scrollHeight + 'px';
+                content.style.opacity = '1';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+
+</html>
